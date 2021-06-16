@@ -1,12 +1,14 @@
 import React from "react"
+import Button from "./Button"
+import Keyboard from "./Keyboard"
+import Screen from "./Screen"
+import "./style.css"
 
-
-class App extends React.Component {
-render(){
+function App(){
     return (
-        <div>hello world</div>
+        <div className="Calculator"> Hiiiii</div>
     )
-}
+
 
 
 }

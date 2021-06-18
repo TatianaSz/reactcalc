@@ -1,8 +1,18 @@
 .btn-light{
 background-color: blue;
 
+
 }
 .btn-dark{
     background-color:red;
     color:blue;
+}
+.btn-one{
+    flex-basis:25%;
+}
+.btn-two{
+   flex-basis:50%;
+}
+.btn-three{
+    flex-basis:75%;
 }

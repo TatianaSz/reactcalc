@@ -3,7 +3,7 @@ import "./css/key.css"
 
 function Keyboard(props){
     return(
-        <div className={'keyboard-' + props.colorset}>
+        <div className={'keyboard'}>
             {props.children}
         </div>
     )

@@ -1,6 +1,6 @@
-.keyboard-light{
-
-}
-.keyboard-dark{
-    
+.keyboard{
+display:flex;
+flex-direction:row;
+flex-wrap:wrap;
+width:200px;
 }

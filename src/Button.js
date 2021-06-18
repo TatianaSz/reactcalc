@@ -4,9 +4,10 @@ import "./css/btn.css"
 function Button(props){
 return(
 <button
-className={'btn-' + props.colorset}
+className={'btn-' + props.colorset + " " + "btn-" + props.width}
 value={props.value}
-onClick={props.onClick}>
+onClick={props.onClick}
+>
 {props.value}
 </button>
 )

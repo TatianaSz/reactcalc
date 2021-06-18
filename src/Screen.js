@@ -2,7 +2,10 @@ import React from "react"
 
 function Screen(){
     return(
-        <div></div>
+        <div>
+
+            
+        </div>
     )
 }
 

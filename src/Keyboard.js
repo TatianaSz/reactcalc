@@ -1,8 +1,11 @@
 import React from "react"
+import "./css/key.css"
 
-function Keyboard(){
+function Keyboard(props){
     return(
-        <div></div>
+        <div className={'keyboard-' + props.colorset}>
+            {props.children}
+        </div>
     )
 }
 

@@ -1,9 +1,14 @@
 import React from "react"
+import "./css/btn.css"
 
-function Button(){
+function Button(props){
 return(
-<div></div>
-
+<button
+className={'btn-' + props.colorset}
+value={props.value}
+onClick={props.onClick}>
+{props.value}
+</button>
 )
 }
 

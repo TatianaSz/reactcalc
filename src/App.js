@@ -14,6 +14,17 @@ function App(){
         e.preventDefault();   
         let value = e.target.getAttribute("value")
         switch(value){
+            case "=":
+            case "/":
+            case "+":
+            case "-":
+            case "*":
+                let p = /\*|\+|\/|\-|\=/gm
+                setNum(num + value)
+                if(p.test(num)){
+                    setNum(num+"")} 
+            break;
+
          case "C":
              console.log("użyto clear");
              break;

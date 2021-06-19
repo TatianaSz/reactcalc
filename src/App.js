@@ -1,12 +1,48 @@
-import React from "react"
+import React, { useState } from "react"
 import Button from "./Button"
 import Keyboard from "./Keyboard"
 import Screen from "./Screen"
+import Prev from "./Prev"
+import Current from "./Current"
 import "./css/style.css"
 
 function App(){
+
+    const [num, setNum] = useState("")
+
     function handleCLick(e) {
         e.preventDefault();   
+        let value = e.target.getAttribute("value")
+        switch(value){
+         case "C":
+             console.log("użyto clear");
+             break;
+         case "/":
+             console.log("dzielenie")
+             break;
+        case "+":
+            console.log("dodawanie");
+            break;
+        case "-":
+            console.log("odejmowanie");
+            break;
+        case "*":
+            console.log("mnożenie");
+            break;
+        case "=":
+            console.log("rowna sie");
+            break;
+        case ".":
+            setNum(num + value)
+            if(num.includes(".")){
+                setNum(num+"")} 
+        break;
+            
+         default:   
+        setNum(num + value)
+         
+        }
+        
         console.log('Działa');
       }
 
@@ -14,7 +50,10 @@ function App(){
 
     return (
         <div className="Calculator"> 
-        <Screen />
+        <Screen> 
+            <Prev displayed="10"/>
+            <Current display={num} />
+        </Screen>
         <Keyboard>
         <Button colorset="light" value="C" width="three" onClick={handleCLick}/>
         <Button colorset="light" value="/" width="one" onClick={handleCLick}/>

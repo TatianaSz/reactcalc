@@ -1,9 +1,11 @@
 import React from "react"
 
-function Screen(){
-    return(
-        <div>
+import "./css/screen.css"
 
+function Screen(props){
+    return(
+        <div className="screen">
+            {props.children}
             
         </div>
     )

@@ -10,13 +10,21 @@ function App(){
 
     const [num, setNum] = useState("")
     const [prevNum, setPrevNum] = useState(" ")
+    
+
+    function clear(){
+        setNum("");
+        setPrevNum("")
+    }
+    function calculate(){
+        setNum(parseFloat(prevNum)+ parseFloat(num))
+    }
 
     function handleCLick(e) {
         e.preventDefault();   
         let value = e.target.getAttribute("value")
         let typ =e.target.getAttribute("typ")
         switch(value){
-            case "=":
             case "/":
             case "+":
             case "-":
@@ -28,13 +36,13 @@ function App(){
             break;
 
          case "C":
-             console.log("użyto clear");
+             clear();
              break;
          case "/":
              console.log("dzielenie")
              break;
         case "+":
-            console.log("dodawanie");
+            console.log("dodawnia");
             break;
         case "-":
             console.log("odejmowanie");
@@ -43,7 +51,7 @@ function App(){
             console.log("mnożenie");
             break;
         case "=":
-            console.log("rowna sie");
+            calculate();
             break;
         case ".":
             setNum(num + value)
@@ -59,7 +67,6 @@ function App(){
             setPrevNum(num + value)
             setNum("")
         }
-        console.log('Działa');
       }
 
 
@@ -91,7 +98,7 @@ function App(){
         
         <Button colorset="light" value="0" typ="numb" width="one" onClick={handleCLick}/>
         <Button colorset="light" value="." width="one" onClick={handleCLick}/>
-        <Button colorset="light" value="=" typ="operator" width="two" onClick={handleCLick}/>
+        <Button colorset="light" value="=" typ="equal" width="two" onClick={handleCLick}/>
 
         </Keyboard>
         </div>

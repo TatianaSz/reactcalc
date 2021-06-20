@@ -5,7 +5,7 @@ import Screen from "./Screen"
 import Prev from "./Prev"
 import Current from "./Current"
 import "./css/style.css"
-
+let op =""
 function App(){
 
     const [num, setNum] = useState("")
@@ -16,42 +16,60 @@ function App(){
         setNum("");
         setPrevNum("")
     }
-    function calculate(){
-        setNum(parseFloat(prevNum)+ parseFloat(num))
+    function calculate(op){
+        if(prevNum === "" || isNaN(parseFloat(prevNum)) || isNaN(parseFloat(num))) return
+      switch(op){
+        case "+": setNum(parseFloat(prevNum)+ parseFloat(num))
+        setPrevNum("")
+        break;
+        case "-":
+            setNum(parseFloat(prevNum)- parseFloat(num))
+            setPrevNum("")
+        break;
+        case "/":
+            setNum(parseFloat(prevNum)/ parseFloat(num))
+             setPrevNum("")
+        break;
+        case "*":
+            setNum(parseFloat(prevNum)* parseFloat(num))
+           setPrevNum("")
+         break;
+      }
+        
     }
-
+  
     function handleCLick(e) {
         e.preventDefault();   
         let value = e.target.getAttribute("value")
         let typ =e.target.getAttribute("typ")
-        switch(value){
-            case "/":
-            case "+":
-            case "-":
-            case "*":
+        
+        switch(typ){
+            case "operator":
                 let p = /\*|\+|\/|\-|\=/gm
                 setNum(num + value)
                 if(p.test(num)){
                     setNum(num+"")} 
-            break;
-
+                break;
+        }
+        switch(value){
+         
          case "C":
              clear();
              break;
          case "/":
-             console.log("dzielenie")
+            op = "/"
              break;
         case "+":
-            console.log("dodawnia");
+           op = "+"
             break;
         case "-":
-            console.log("odejmowanie");
+            op = "-"
             break;
         case "*":
-            console.log("mnożenie");
+            op = "*"
             break;
         case "=":
-            calculate();
+            calculate(op);
             break;
         case ".":
             setNum(num + value)
@@ -67,6 +85,7 @@ function App(){
             setPrevNum(num + value)
             setNum("")
         }
+      console.log(op)
       }
 
 

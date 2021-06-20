@@ -1,10 +1,10 @@
 import React from "react"
-
+import "./css/curr.css"
 
 
 function Current(props){
     return(
-        <div> 
+        <div className="current"> 
           {props.display}
             </div>
     )

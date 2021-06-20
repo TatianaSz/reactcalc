@@ -19,19 +19,19 @@ function App(){
     function calculate(op){
         if(prevNum === "" || isNaN(parseFloat(prevNum)) || isNaN(parseFloat(num))) return
       switch(op){
-        case "+": setNum(parseFloat(prevNum)+ parseFloat(num))
+        case "+": setNum((parseFloat(prevNum)+ parseFloat(num)).toString())
         setPrevNum("")
         break;
         case "-":
-            setNum(parseFloat(prevNum)- parseFloat(num))
+            setNum((parseFloat(prevNum)- parseFloat(num)).toString())
             setPrevNum("")
         break;
         case "/":
-            setNum(parseFloat(prevNum)/ parseFloat(num))
+            setNum((parseFloat(prevNum)/ parseFloat(num)).toString())
              setPrevNum("")
         break;
         case "*":
-            setNum(parseFloat(prevNum)* parseFloat(num))
+            setNum((parseFloat(prevNum)* parseFloat(num)).toString())
            setPrevNum("")
          break;
       }
@@ -43,14 +43,14 @@ function App(){
         let value = e.target.getAttribute("value")
         let typ =e.target.getAttribute("typ")
         
-        switch(typ){
-            case "operator":
-                let p = /\*|\+|\/|\-|\=/gm
-                setNum(num + value)
-                if(p.test(num)){
-                    setNum(num+"")} 
-                break;
-        }
+      //  switch(typ){
+         //   case "operator":
+      //          let p = /\*|\+|\/|\=/gm
+      //          setNum(num + value)
+      //          if(p.test(num)){
+       //             setNum(num+"")} 
+      //          break;
+      //  }
         switch(value){
          
          case "C":
@@ -82,10 +82,10 @@ function App(){
          
         }
         if(typ=="operator"){
+            if(value=="/"){}
             setPrevNum(num + value)
             setNum("")
         }
-      console.log(op)
       }
 
 

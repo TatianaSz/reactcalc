@@ -103,8 +103,6 @@ flag=false;
         setNum(num + value)
          
         }
-     
-    console.log(flag)
       }
 
 

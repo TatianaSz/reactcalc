@@ -6,6 +6,7 @@ import Prev from "./Prev"
 import Current from "./Current"
 import "./css/style.css"
 let op =""
+let flag=true;
 function App(){
 
     const [num, setNum] = useState("")
@@ -15,62 +16,83 @@ function App(){
     function clear(){
         setNum("");
         setPrevNum("")
+        flag=true;
     }
     function calculate(op){
+    
         if(prevNum === "" || isNaN(parseFloat(prevNum)) || isNaN(parseFloat(num))) return
       switch(op){
-        case "+": setNum((parseFloat(prevNum)+ parseFloat(num)).toString())
+        case "+": setNum((Math.round((parseFloat((prevNum))+parseFloat((num)))*1000000)/1000000).toString())
         setPrevNum("")
+       
         break;
         case "-":
-            setNum((parseFloat(prevNum)- parseFloat(num)).toString())
+            setNum((Math.round((parseFloat(prevNum)-parseFloat(num))*1000000)/1000000).toString())
             setPrevNum("")
+          
         break;
         case "/":
-            setNum((parseFloat(prevNum)/ parseFloat(num)).toString())
-             setPrevNum("")
+            setNum((Math.round((parseFloat(prevNum)/ parseFloat(num))*1000000)/1000000).toString())
+            setPrevNum("")
+           
         break;
         case "*":
-            setNum((parseFloat(prevNum)* parseFloat(num)).toString())
-           setPrevNum("")
+            setNum((Math.round((parseFloat(prevNum)*parseFloat(num))*1000000)/1000000).toString())
+            setPrevNum("")
+           
          break;
       }
-        
+ 
+   
     }
   
     function handleCLick(e) {
         e.preventDefault();   
         let value = e.target.getAttribute("value")
         let typ =e.target.getAttribute("typ")
-        
-      //  switch(typ){
-         //   case "operator":
-      //          let p = /\*|\+|\/|\=/gm
-      //          setNum(num + value)
-      //          if(p.test(num)){
-       //             setNum(num+"")} 
-      //          break;
-      //  }
+   
+      if(typ=="operator"){
+        if(value=="-" && flag==true){
+            setNum(value + num)
+            if(num.includes("-")){
+                setNum(num+"")} 
+                console.log(flag)
+        }
+        else{
+        setPrevNum(num + value)
+        setNum("")
+    }
+
+   
+}
+flag=false;
         switch(value){
-         
          case "C":
              clear();
              break;
          case "/":
+             flag=true;
             op = "/"
              break;
         case "+":
+            flag=true;
            op = "+"
             break;
         case "-":
+            if(op===""){
             op = "-"
-            break;
+       }flag=true;
+          break;
         case "*":
+            flag=true;
             op = "*"
             break;
         case "=":
             calculate(op);
+            flag=false;
+            op=""
             break;
+            
         case ".":
             setNum(num + value)
             if(num.includes(".")){
@@ -81,11 +103,8 @@ function App(){
         setNum(num + value)
          
         }
-        if(typ=="operator"){
-            if(value=="/"){}
-            setPrevNum(num + value)
-            setNum("")
-        }
+     
+    console.log(flag)
       }
 
 
@@ -129,3 +148,14 @@ function App(){
 
 
 export default App
+
+
+     
+      //  switch(typ){
+      //   case "operator":
+      //          let p = /\*|\+|\/|\=/gm
+      //          setNum(num + value)
+      //          if(p.test(num)){
+      //             setNum(num+"")} 
+      //          break;
+      //  } not neccesary anymore
